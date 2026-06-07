@@ -44,6 +44,7 @@ Local .ibt file
 | `TrackSegment` | Comparable range of lap distance or normalized distance. |
 | `TelemetryEvidence` | Structured observations supporting a recommendation. |
 | `Opportunity` | Ranked time-loss opportunity with location, impact, cause, and evidence. |
+| `AnalysisSummary` | Traceability metadata for the analysis run, including reference lap, thresholds, and validation notes. |
 | `CoachingRecommendation` | Human-facing guidance and practice drill derived from an opportunity. |
 
 ## Initial Analysis Strategy
@@ -63,12 +64,15 @@ The analysis layer now uses an explicit `AnalysisConfig` for thresholds and repo
 
 Repeated lap findings for the same segment are consolidated into one primary pace opportunity with repeated evidence attached. Consistency opportunities remain separate because they answer a different coaching question.
 
+The CLI uses `analyze_session_with_summary()` so every generated report includes provenance. The older `analyze_session()` API remains available for tests or callers that only need ranked opportunities.
+
 ## Interfaces
 
 Initial interface:
 
 - CLI command that accepts an `.ibt` path and writes a Markdown or text coaching report.
 - CLI options for limiting ranked opportunities and excluding consistency findings.
+- CLI command can read normalized synthetic JSON fixtures for repeatable validation.
 
 Future interfaces:
 

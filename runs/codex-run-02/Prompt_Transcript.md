@@ -27,3 +27,7 @@ The human clarified:
 ## Human Acceptance - 2026-06-06
 
 The human accepted Milestone 1 and instructed Codex to proceed to Milestone 2 while continuing to maintain requirements, architecture, traceability, test strategy, run evidence artifacts, design decisions, and assumptions. The human also instructed Codex not to remove current validation boundaries unless supported by evidence.
+
+## Human Acceptance - Milestone 2 - 2026-06-06
+
+The human accepted Milestone 2 and instructed Codex to continue maintaining all engineering artifacts and run evidence, preserve explicit assumptions and validation boundaries, and prioritize explainability, traceability, testability, and maintainability over feature count as complexity increases.

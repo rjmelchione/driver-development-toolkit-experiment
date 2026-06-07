@@ -45,6 +45,7 @@ class TelemetrySession:
     car: str
     track: str
     laps: tuple[Lap, ...]
+    source_type: str = "unknown"
 
 
 @dataclass(frozen=True)
@@ -78,3 +79,19 @@ class Opportunity:
     evidence: tuple[TelemetryEvidence, ...]
     comparison_lap: Optional[int] = None
     reference_lap: Optional[int] = None
+
+
+@dataclass(frozen=True)
+class AnalysisSummary:
+    """Traceability metadata for an analysis run."""
+
+    reference_lap: int
+    reference_lap_time_s: float
+    valid_lap_count: int
+    segment_count: int
+    minimum_impact_s: float
+    throttle_delta_threshold_pct: float
+    brake_delta_threshold_pct: float
+    consistency_included: bool
+    max_opportunities: Optional[int]
+    validation_notes: tuple[str, ...]

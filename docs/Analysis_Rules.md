@@ -68,6 +68,22 @@ The current CLI exposes:
 - `--max-opportunities N` to limit report length.
 - `--no-consistency` to exclude consistency opportunities.
 
+## Analysis Provenance
+
+Generated CLI reports include:
+
+- Source type.
+- Reference lap and reference lap time.
+- Valid lap count.
+- Segment count.
+- Minimum impact threshold.
+- Throttle and brake classification thresholds.
+- Consistency inclusion setting.
+- Report opportunity limit.
+- Validation notes.
+
 ## Validation Boundary
 
 Real `.ibt` ingestion remains intentionally blocked until representative Late Model telemetry is available for validation. The current rules are tested against synthetic telemetry fixtures only.
+
+Synthetic fixture sources are labeled in reports and should not be treated as real driver evidence.

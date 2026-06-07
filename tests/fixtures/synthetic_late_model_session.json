@@ -1,0 +1,51 @@
+{
+  "car": "iRacing Late Model",
+  "track": "Synthetic short oval",
+  "laps": [
+    {
+      "number": 1,
+      "lap_time_s": 22.4,
+      "valid": true,
+      "samples": [
+        {"distance_pct": 0.05, "speed_mph": 91, "throttle_pct": 20, "brake_pct": 45},
+        {"distance_pct": 0.15, "speed_mph": 88, "throttle_pct": 35, "brake_pct": 30},
+        {"distance_pct": 0.30, "speed_mph": 86, "throttle_pct": 55, "brake_pct": 10},
+        {"distance_pct": 0.40, "speed_mph": 93, "throttle_pct": 68, "brake_pct": 0},
+        {"distance_pct": 0.55, "speed_mph": 90, "throttle_pct": 25, "brake_pct": 44},
+        {"distance_pct": 0.65, "speed_mph": 87, "throttle_pct": 40, "brake_pct": 25},
+        {"distance_pct": 0.80, "speed_mph": 85, "throttle_pct": 52, "brake_pct": 8},
+        {"distance_pct": 0.90, "speed_mph": 92, "throttle_pct": 70, "brake_pct": 0}
+      ]
+    },
+    {
+      "number": 2,
+      "lap_time_s": 22.0,
+      "valid": true,
+      "samples": [
+        {"distance_pct": 0.05, "speed_mph": 94, "throttle_pct": 24, "brake_pct": 38},
+        {"distance_pct": 0.15, "speed_mph": 91, "throttle_pct": 39, "brake_pct": 24},
+        {"distance_pct": 0.30, "speed_mph": 90, "throttle_pct": 68, "brake_pct": 4},
+        {"distance_pct": 0.40, "speed_mph": 97, "throttle_pct": 80, "brake_pct": 0},
+        {"distance_pct": 0.55, "speed_mph": 93, "throttle_pct": 28, "brake_pct": 39},
+        {"distance_pct": 0.65, "speed_mph": 90, "throttle_pct": 44, "brake_pct": 20},
+        {"distance_pct": 0.80, "speed_mph": 89, "throttle_pct": 65, "brake_pct": 3},
+        {"distance_pct": 0.90, "speed_mph": 96, "throttle_pct": 82, "brake_pct": 0}
+      ]
+    },
+    {
+      "number": 3,
+      "lap_time_s": 22.8,
+      "valid": true,
+      "samples": [
+        {"distance_pct": 0.05, "speed_mph": 90, "throttle_pct": 18, "brake_pct": 52},
+        {"distance_pct": 0.15, "speed_mph": 86, "throttle_pct": 30, "brake_pct": 36},
+        {"distance_pct": 0.30, "speed_mph": 84, "throttle_pct": 50, "brake_pct": 12},
+        {"distance_pct": 0.40, "speed_mph": 90, "throttle_pct": 62, "brake_pct": 0},
+        {"distance_pct": 0.55, "speed_mph": 89, "throttle_pct": 20, "brake_pct": 48},
+        {"distance_pct": 0.65, "speed_mph": 85, "throttle_pct": 35, "brake_pct": 28},
+        {"distance_pct": 0.80, "speed_mph": 82, "throttle_pct": 48, "brake_pct": 10},
+        {"distance_pct": 0.90, "speed_mph": 89, "throttle_pct": 66, "brake_pct": 0}
+      ]
+    }
+  ]
+}

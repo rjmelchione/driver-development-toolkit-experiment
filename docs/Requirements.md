@@ -17,6 +17,8 @@
 | FR-011 | The system should support future reference lap comparison without requiring it for MVP operation. | Product Vision | Should | Design should not block future expansion. |
 | FR-012 | The system shall allow users to limit report length from the CLI. | Agent-derived from coaching-first usability | Should | Supports focused review of highest-impact opportunities. |
 | FR-013 | The system shall allow users to exclude consistency findings from the CLI report. | Agent-derived from coaching-first usability | Should | Separates direct lap-comparison coaching from repeatability coaching when desired. |
+| FR-014 | The system shall include analysis provenance in generated reports. | Agent-derived from explainability and traceability goals | Must | Includes reference lap, thresholds, report limits, and validation notes. |
+| FR-015 | The system shall support an on-disk synthetic telemetry fixture format for repeatable tests and demos. | Human clarification / testability need | Must | Used until representative `.ibt` data is available. |
 
 ## Non-Functional Requirements
 
@@ -38,4 +40,5 @@ For a representative `.ibt` file with completed laps:
 - The report lists ranked opportunities with estimated time impact.
 - Repeated lap findings for the same segment are consolidated into a readable coaching opportunity.
 - Each opportunity includes where, why, what to change, how to practice, and supporting evidence.
+- The report states the analysis assumptions and validation boundary used to produce it.
 - Tests can be run with one documented command.

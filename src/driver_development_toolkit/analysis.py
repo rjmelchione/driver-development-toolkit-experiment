@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from statistics import mean, pstdev
 
 from driver_development_toolkit.models import (
+    AnalysisSummary,
     Lap,
     Opportunity,
     OpportunityKind,
@@ -42,6 +43,17 @@ def analyze_session(
 ) -> list[Opportunity]:
     """Return ranked coaching opportunities for a session."""
 
+    return analyze_session_with_summary(session, segments, minimum_impact_s, config)[0]
+
+
+def analyze_session_with_summary(
+    session: TelemetrySession,
+    segments: tuple[TrackSegment, ...] = DEFAULT_SEGMENTS,
+    minimum_impact_s: float = 0.03,
+    config: AnalysisConfig | None = None,
+) -> tuple[list[Opportunity], AnalysisSummary]:
+    """Return ranked opportunities and traceability metadata for a session."""
+
     analysis_config = config or AnalysisConfig(minimum_impact_s=minimum_impact_s)
     valid_laps = tuple(lap for lap in session.laps if lap.valid)
     if len(valid_laps) < 2:
@@ -65,9 +77,32 @@ def analyze_session(
         )
 
     ranked = sorted(consolidated, key=lambda opportunity: opportunity.impact_s, reverse=True)
-    if analysis_config.max_opportunities is None:
-        return ranked
-    return ranked[: analysis_config.max_opportunities]
+    if analysis_config.max_opportunities is not None:
+        ranked = ranked[: analysis_config.max_opportunities]
+
+    summary = AnalysisSummary(
+        reference_lap=reference_lap.number,
+        reference_lap_time_s=reference_lap.lap_time_s,
+        valid_lap_count=len(valid_laps),
+        segment_count=len(segments),
+        minimum_impact_s=analysis_config.minimum_impact_s,
+        throttle_delta_threshold_pct=analysis_config.throttle_delta_threshold_pct,
+        brake_delta_threshold_pct=analysis_config.brake_delta_threshold_pct,
+        consistency_included=analysis_config.include_consistency,
+        max_opportunities=analysis_config.max_opportunities,
+        validation_notes=_validation_notes(session),
+    )
+    return ranked, summary
+
+
+def _validation_notes(session: TelemetrySession) -> tuple[str, ...]:
+    notes = [
+        "Analysis rules are currently validated against synthetic telemetry fixtures only.",
+        "Real iRacing .ibt ingestion remains blocked until representative Late Model telemetry is available.",
+    ]
+    if session.source_type.startswith("synthetic"):
+        notes.append("Source telemetry is synthetic and should not be treated as real driver evidence.")
+    return tuple(notes)
 
 
 def _segment_samples(lap: Lap, segment: TrackSegment) -> tuple[TelemetrySample, ...]:

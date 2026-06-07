@@ -12,6 +12,7 @@
 | A-006 | The fastest valid lap can serve as the internal reference lap for self-comparison. | Enables single-session analysis without external reference data. | Needs validation with real telemetry |
 | A-007 | Fixed normalized-distance segments are acceptable for synthetic fixture development. | Keeps analysis testable until real track/corner metadata is available. | Needs replacement or refinement with real telemetry |
 | A-008 | Repeated lower-impact findings for the same segment should be evidence for the primary segment opportunity rather than separate ranked rows. | Produces a more coaching-first report. | Needs user review |
+| A-009 | Reports should state validation notes directly in user-visible output while synthetic fixtures are the only validation source. | Prevents synthetic-demo output from being mistaken for real driver evidence. | Confirmed by project priorities |
 
 ## Material Clarification Questions
 

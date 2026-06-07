@@ -12,6 +12,7 @@ def demo_session() -> TelemetrySession:
         source="built-in synthetic fixture",
         car="iRacing Late Model",
         track="Synthetic short oval",
+        source_type="synthetic_builtin",
         laps=(
             Lap(
                 number=1,

@@ -47,3 +47,11 @@ Generate only direct lap comparison opportunities:
 ```bash
 uv run ddt --demo --no-consistency
 ```
+
+Analyze the checked-in synthetic JSON fixture:
+
+```bash
+uv run ddt tests\fixtures\synthetic_late_model_session.json --max-opportunities 2
+```
+
+The current `.ibt` reader is intentionally blocked until a representative iRacing Late Model `.ibt` file is available for validation.

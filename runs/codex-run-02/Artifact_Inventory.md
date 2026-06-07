@@ -20,3 +20,4 @@
 | `src/driver_development_toolkit/` | Implementation | Codex | Stage 2 | Provide domain models, ingestion boundary, analysis rules, reporting, CLI, and synthetic fixtures. | Initial MVP foundation. | Yes |
 | `tests/` | Quality artifact | Codex | Stage 2 | Validate analysis ranking, evidence-backed reporting, and ingestion boundary behavior. | Uses synthetic fixtures until real `.ibt` data is available. | Yes |
 | `docs/Analysis_Rules.md` | Design documentation | Codex | Stage 2 | Document ranking, thresholds, classifications, consolidation, consistency analysis, and validation boundary. | Added in Milestone 2 to avoid reverse engineering coaching logic. | Yes |
+| `tests/fixtures/synthetic_late_model_session.json` | Test fixture | Codex | Stage 2 | Provide repeatable on-disk telemetry input for fixture-path ingestion and CLI tests. | Synthetic and labeled as such; not real driver evidence. | Yes |

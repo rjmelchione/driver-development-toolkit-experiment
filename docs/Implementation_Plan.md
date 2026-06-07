@@ -62,3 +62,26 @@ Status:
 | 4 | Add CLI report controls. | Done: `--max-opportunities` and `--no-consistency`. |
 | 5 | Update tests. | Done: 10 tests pass. |
 | 6 | Update engineering artifacts. | Done: requirements, architecture, traceability, test strategy, assumptions, analysis rules, and run evidence updated. |
+
+## Third Implementation Milestone
+
+Milestone 3: Analysis provenance and fixture-path validation.
+
+Target outcome:
+
+- Milestone 2 accepted by the human.
+- Reports include analysis provenance: reference lap, thresholds, segment count, report limits, consistency setting, and validation notes.
+- Synthetic JSON fixture ingestion is tested through the same reader path a user can run from the CLI.
+- Current `.ibt` validation boundary remains explicit in code and report output.
+- Engineering artifacts and run evidence stay synchronized.
+
+Status:
+
+| Step | Task | Exit Criteria |
+|---|---|---|
+| 1 | Record Milestone 2 acceptance. | Done: run evidence updated. |
+| 2 | Add analysis summary model. | Done: `AnalysisSummary` captures reference lap, thresholds, and validation notes. |
+| 3 | Include provenance in reports. | Done: Markdown report renders `Analysis Provenance`. |
+| 4 | Add on-disk synthetic telemetry fixture. | Done: `tests/fixtures/synthetic_late_model_session.json`. |
+| 5 | Test fixture ingestion and CLI path. | Done: 13 tests pass. |
+| 6 | Update engineering artifacts. | Done: requirements, architecture, traceability, test strategy, analysis rules, and run evidence updated. |

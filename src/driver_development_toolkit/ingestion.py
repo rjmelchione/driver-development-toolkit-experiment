@@ -49,6 +49,7 @@ class SyntheticTelemetryReader:
             car=str(payload.get("car", "Unknown car")),
             track=str(payload.get("track", "Unknown track")),
             laps=tuple(laps),
+            source_type="synthetic_json",
         )
 
 

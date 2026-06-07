@@ -5,7 +5,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from driver_development_toolkit.analysis import AnalysisConfig, analyze_session
+from driver_development_toolkit.analysis import AnalysisConfig, analyze_session_with_summary
 from driver_development_toolkit.ingestion import reader_for_path
 from driver_development_toolkit.reporting import render_markdown_report
 from driver_development_toolkit.synthetic import demo_session
@@ -46,8 +46,8 @@ def main(argv: list[str] | None = None) -> int:
         include_consistency=not args.no_consistency,
         max_opportunities=args.max_opportunities,
     )
-    opportunities = analyze_session(session, config=config)
-    report = render_markdown_report(session, opportunities)
+    opportunities, summary = analyze_session_with_summary(session, config=config)
+    report = render_markdown_report(session, opportunities, summary)
 
     if args.output:
         Path(args.output).write_text(report, encoding="utf-8")

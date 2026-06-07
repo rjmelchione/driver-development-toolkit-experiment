@@ -1,4 +1,4 @@
-from driver_development_toolkit.analysis import AnalysisConfig, analyze_session
+from driver_development_toolkit.analysis import AnalysisConfig, analyze_session, analyze_session_with_summary
 from driver_development_toolkit.models import OpportunityKind
 from driver_development_toolkit.synthetic import demo_session
 
@@ -46,3 +46,12 @@ def test_analysis_config_can_limit_reported_opportunities():
     opportunities = analyze_session(demo_session(), config=AnalysisConfig(max_opportunities=3))
 
     assert len(opportunities) == 3
+
+
+def test_analysis_summary_exposes_reference_and_validation_notes():
+    opportunities, summary = analyze_session_with_summary(demo_session())
+
+    assert opportunities
+    assert summary.reference_lap == 2
+    assert summary.minimum_impact_s == 0.03
+    assert any("synthetic" in note for note in summary.validation_notes)
