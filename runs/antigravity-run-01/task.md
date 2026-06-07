@@ -18,13 +18,13 @@
   - [x] Map flagged rules to ranked opportunities and structured practice recommendations
   - [x] Write unit tests for coaching rules in `tests/test_coaching.py`
   - [x] Validate tests pass and commit progress
-- [ ] **Milestone 4: Streamlit UI Development**
-  - [ ] Implement session metadata loader and file upload widget in `app.py`
-  - [ ] Implement dashboard layout (sidebar for lap selections, main screen for findings)
-  - [ ] Build opportunity ranking list cards
-  - [ ] Add interactive Plotly overlay charts (speed, throttle, brake)
-  - [ ] Add interactive tooltips showing current inputs vs reference inputs at specific track locations
-  - [ ] Manually verify UI flow and responsiveness
+- [x] **Milestone 4: Streamlit UI Development**
+  - [x] Implement session metadata loader and file upload widget in `app.py`
+  - [x] Implement dashboard layout (sidebar for lap selections, main screen for findings)
+  - [x] Build opportunity ranking list cards
+  - [x] Add interactive Plotly overlay charts (speed, throttle, brake)
+  - [x] Add interactive tooltips showing current inputs vs reference inputs at specific track locations
+  - [x] Manually verify UI flow and responsiveness
 - [ ] **Milestone 5: Documentation & Handoff**
   - [ ] Create `docs/Maintainer_Handoff.md`
   - [ ] Write `runs/antigravity-run-01/walkthrough.md` summarizing features, test instructions, and screenshots
