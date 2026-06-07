@@ -188,6 +188,7 @@ class SyntheticTelemetryGenerator:
         v = 40.0        # speed (m/s)
         dist = 0.0      # distance (m)
         time_elapsed = 0.0
+        has_reset = False
         
         # Physics constants
         c_engine = 4.0   # Engine force coefficient
@@ -196,6 +197,11 @@ class SyntheticTelemetryGenerator:
         
         # Loop until we complete the lap (dist >= track_length)
         while dist < self.track_length:
+            # Reset speed at backstretch start (500m) to isolate Turn 1-2 from Turn 3-4
+            if dist >= 500.0 and not has_reset:
+                v = 40.0
+                has_reset = True
+
             throttle = throttle_fn(dist)
             brake = brake_fn(dist)
             steering = self._get_steering_profile(dist)

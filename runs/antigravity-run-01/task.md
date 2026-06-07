@@ -1,12 +1,12 @@
 # Task Checklist - Driver Development Toolkit
 
-- [ ] **Milestone 1: Environment & Telemetry Foundations**
-  - [ ] Initialize Python project using `uv init` and install dependencies (`streamlit`, `plotly`, `pyirsdk`, `pandas`, `numpy`, `pytest`)
-  - [ ] Implement synthetic telemetry data generator (`SyntheticTelemetryGenerator`) in `parser.py`
-  - [ ] Implement `parser.py` using `pyirsdk` for reading physical `.ibt` files offline
-  - [ ] Implement lap extraction and timeline splitting in `parser.py`
-  - [ ] Write unit tests for parsing and synthetic generation in `tests/test_parser.py`
-  - [ ] Validate tests pass and commit progress
+- [x] **Milestone 1: Environment & Telemetry Foundations**
+  - [x] Initialize Python project using `uv init` and install dependencies (`streamlit`, `plotly`, `pyirsdk`, `pandas`, `numpy`, `pytest`)
+  - [x] Implement synthetic telemetry data generator (`SyntheticTelemetryGenerator`) in `parser.py`
+  - [x] Implement `parser.py` using `pyirsdk` for reading physical `.ibt` files offline
+  - [x] Implement lap extraction and timeline splitting in `parser.py`
+  - [x] Write unit tests for parsing and synthetic generation in `tests/test_parser.py`
+  - [x] Validate tests pass and commit progress
 - [ ] **Milestone 2: Sectoring & Comparison Engine**
   - [ ] Create base interface `BaseSectorer` and implement `OvalSectorer` in `analyzer.py`
   - [ ] Create `TelemetryComparer` in `analyzer.py` using linear interpolation (numpy) to align two laps by distance
