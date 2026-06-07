@@ -1,0 +1,31 @@
+# Task Checklist - Driver Development Toolkit
+
+- [ ] **Milestone 1: Environment & Telemetry Foundations**
+  - [ ] Initialize Python project using `uv init` and install dependencies (`streamlit`, `plotly`, `pyirsdk`, `pandas`, `numpy`, `pytest`)
+  - [ ] Implement synthetic telemetry data generator (`SyntheticTelemetryGenerator`) in `parser.py`
+  - [ ] Implement `parser.py` using `pyirsdk` for reading physical `.ibt` files offline
+  - [ ] Implement lap extraction and timeline splitting in `parser.py`
+  - [ ] Write unit tests for parsing and synthetic generation in `tests/test_parser.py`
+  - [ ] Validate tests pass and commit progress
+- [ ] **Milestone 2: Sectoring & Comparison Engine**
+  - [ ] Create base interface `BaseSectorer` and implement `OvalSectorer` in `analyzer.py`
+  - [ ] Create `TelemetryComparer` in `analyzer.py` using linear interpolation (numpy) to align two laps by distance
+  - [ ] Compute time-slip (delta-T) cumulative curve
+  - [ ] Write unit tests for sectoring and alignment in `tests/test_analyzer.py`
+  - [ ] Validate tests pass and commit progress
+- [ ] **Milestone 3: Coaching Engine & Heuristics**
+  - [ ] Implement entry, mid-corner, and exit coaching rules in `coaching.py`
+  - [ ] Map flagged rules to ranked opportunities and structured practice recommendations
+  - [ ] Write unit tests for coaching rules in `tests/test_coaching.py`
+  - [ ] Validate tests pass and commit progress
+- [ ] **Milestone 4: Streamlit UI Development**
+  - [ ] Implement session metadata loader and file upload widget in `app.py`
+  - [ ] Implement dashboard layout (sidebar for lap selections, main screen for findings)
+  - [ ] Build opportunity ranking list cards
+  - [ ] Add interactive Plotly overlay charts (speed, throttle, brake)
+  - [ ] Add interactive tooltips showing current inputs vs reference inputs at specific track locations
+  - [ ] Manually verify UI flow and responsiveness
+- [ ] **Milestone 5: Documentation & Handoff**
+  - [ ] Create `docs/Maintainer_Handoff.md`
+  - [ ] Write `runs/antigravity-run-01/walkthrough.md` summarizing features, test instructions, and screenshots
+  - [ ] Final project linting, validation, and commit
