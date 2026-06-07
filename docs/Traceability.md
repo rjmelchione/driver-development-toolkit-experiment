@@ -12,6 +12,15 @@
 | Present telemetry evidence. | FR-009, FR-010 | Evidence model, reporting | Report content tests |
 | Maintainable future extension. | NFR-001, NFR-002, NFR-006 | Layered architecture, docs, tests | Unit/integration tests and docs review |
 
+## Requirement-to-Implementation Traceability
+
+| Requirement IDs | Implementation Area | Tests |
+|---|---|---|
+| FR-001, FR-002, FR-003 | `driver_development_toolkit.ingestion`, `driver_development_toolkit.models` | `tests/test_ingestion.py` |
+| FR-004, FR-005, FR-006, FR-007, FR-008, FR-009 | `driver_development_toolkit.analysis` | `tests/test_analysis.py` |
+| FR-010 | `driver_development_toolkit.cli`, `driver_development_toolkit.reporting` | `tests/test_reporting.py` |
+| NFR-001, NFR-002, NFR-006 | `docs/`, `runs/codex-run-02/`, `tests/` | Documentation review and `uv run pytest` |
+
 ## Artifact Traceability
 
 | Artifact | Supports |

@@ -1,0 +1,23 @@
+[project]
+name = "driver-development-toolkit"
+version = "0.1.0"
+description = "Coaching-first iRacing telemetry analysis toolkit."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+ddt = "driver_development_toolkit.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

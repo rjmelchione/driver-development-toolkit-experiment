@@ -13,3 +13,13 @@ The human provided the experiment launch prompt for the Driver Development Toolk
 ## Initial Agent Response Summary
 
 Codex reviewed the provided Experiment Plan, Product Vision, and Execution Guide; researched existing `.ibt` parser options; and created initial engineering artifacts before writing implementation code.
+
+## Human Clarification - 2026-06-06
+
+The human clarified:
+
+- A representative Late Model `.ibt` file is not currently available.
+- Codex should proceed using synthetic telemetry fixtures.
+- The ingestion layer should be designed so real `.ibt` files can be incorporated later for validation.
+- A CLI-generated Markdown/text coaching report is acceptable as the first milestone.
+- Correctness, explainability, maintainability, traceability, and testability should be prioritized over UI.

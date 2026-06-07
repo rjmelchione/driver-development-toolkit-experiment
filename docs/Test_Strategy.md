@@ -42,7 +42,7 @@ Target commands once the Python project is initialized:
 
 ```bash
 uv run pytest
-uv run ddt analyze path\to\session.ibt
+uv run ddt --demo
 ```
 
-Exact commands may change during implementation and should be updated here and in the README.
+Real `.ibt` validation is deferred until a representative Late Model telemetry file is available. Until then, parser contract coverage verifies that the ingestion boundary reports the limitation clearly.

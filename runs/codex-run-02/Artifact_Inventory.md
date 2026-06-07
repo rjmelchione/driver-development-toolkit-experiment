@@ -16,3 +16,6 @@
 | `docs/Assumptions.md` | Governance artifact | Codex | Stage 1 | Track assumptions requiring review. | Includes material open questions. | Yes |
 | `docs/Traceability.md` | Traceability artifact | Codex | Stage 1 | Link vision goals to requirements, design, and tests. | Initial traceability matrix. | Yes |
 | `docs/Implementation_Plan.md` | Planning artifact | Codex | Stage 1 | Define first milestone and execution sequence. | Pre-code plan; scoped to MVP foundation. | Yes |
+| `pyproject.toml` | Build artifact | Codex | Stage 2 | Define Python package, CLI entry point, and test dependency group. | Created after human clarified implementation could proceed. | Yes |
+| `src/driver_development_toolkit/` | Implementation | Codex | Stage 2 | Provide domain models, ingestion boundary, analysis rules, reporting, CLI, and synthetic fixtures. | Initial MVP foundation. | Yes |
+| `tests/` | Quality artifact | Codex | Stage 2 | Validate analysis ranking, evidence-backed reporting, and ingestion boundary behavior. | Uses synthetic fixtures until real `.ibt` data is available. | Yes |
