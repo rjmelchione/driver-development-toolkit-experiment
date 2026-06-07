@@ -5,7 +5,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from driver_development_toolkit.analysis import analyze_session
+from driver_development_toolkit.analysis import AnalysisConfig, analyze_session
 from driver_development_toolkit.ingestion import reader_for_path
 from driver_development_toolkit.reporting import render_markdown_report
 from driver_development_toolkit.synthetic import demo_session
@@ -16,6 +16,16 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("telemetry_path", nargs="?", help="Path to a normalized JSON fixture or future .ibt file.")
     parser.add_argument("--demo", action="store_true", help="Generate a report from built-in synthetic telemetry.")
     parser.add_argument("--output", "-o", help="Optional report output path. Prints to stdout when omitted.")
+    parser.add_argument(
+        "--max-opportunities",
+        type=int,
+        help="Limit the number of ranked opportunities in the report.",
+    )
+    parser.add_argument(
+        "--no-consistency",
+        action="store_true",
+        help="Exclude lap-to-lap consistency opportunities.",
+    )
     return parser
 
 
@@ -32,7 +42,11 @@ def main(argv: list[str] | None = None) -> int:
     else:
         parser.error("provide a telemetry path or use --demo")
 
-    opportunities = analyze_session(session)
+    config = AnalysisConfig(
+        include_consistency=not args.no_consistency,
+        max_opportunities=args.max_opportunities,
+    )
+    opportunities = analyze_session(session, config=config)
     report = render_markdown_report(session, opportunities)
 
     if args.output:

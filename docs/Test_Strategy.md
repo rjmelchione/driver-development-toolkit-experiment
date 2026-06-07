@@ -33,8 +33,10 @@ Fallback:
 - Best-lap selection.
 - Segment delta calculations.
 - Opportunity ranking by estimated impact.
+- Consolidation of repeated segment findings.
 - Evidence included for each recommendation.
 - Report generation includes all four coaching questions.
+- CLI report-shaping options.
 
 ## Test Commands
 
@@ -43,6 +45,10 @@ Target commands once the Python project is initialized:
 ```bash
 uv run pytest
 uv run ddt --demo
+uv run ddt --demo --max-opportunities 3
+uv run ddt --demo --no-consistency
 ```
 
 Real `.ibt` validation is deferred until a representative Late Model telemetry file is available. Until then, parser contract coverage verifies that the ingestion boundary reports the limitation clearly.
+
+Current automated coverage: 10 tests covering analysis, CLI behavior, ingestion boundaries, and report rendering.

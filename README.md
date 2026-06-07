@@ -35,3 +35,15 @@ Generate a demo coaching report:
 ```bash
 uv run ddt --demo
 ```
+
+Limit report length:
+
+```bash
+uv run ddt --demo --max-opportunities 3
+```
+
+Generate only direct lap comparison opportunities:
+
+```bash
+uv run ddt --demo --no-consistency
+```

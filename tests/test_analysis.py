@@ -1,4 +1,4 @@
-from driver_development_toolkit.analysis import analyze_session
+from driver_development_toolkit.analysis import AnalysisConfig, analyze_session
 from driver_development_toolkit.models import OpportunityKind
 from driver_development_toolkit.synthetic import demo_session
 
@@ -24,3 +24,25 @@ def test_synthetic_session_detects_throttle_or_brake_opportunity():
     kinds = {opportunity.kind for opportunity in analyze_session(demo_session())}
 
     assert OpportunityKind.THROTTLE_APPLICATION in kinds or OpportunityKind.BRAKE_RELEASE in kinds
+
+
+def test_repeated_segment_findings_are_consolidated():
+    opportunities = analyze_session(demo_session())
+    pace_segments = [
+        opportunity.segment.name
+        for opportunity in opportunities
+        if opportunity.kind != OpportunityKind.CONSISTENCY
+    ]
+
+    assert len(pace_segments) == len(set(pace_segments))
+    assert any(
+        evidence.metric == "Repeated opportunity"
+        for opportunity in opportunities
+        for evidence in opportunity.evidence
+    )
+
+
+def test_analysis_config_can_limit_reported_opportunities():
+    opportunities = analyze_session(demo_session(), config=AnalysisConfig(max_opportunities=3))
+
+    assert len(opportunities) == 3

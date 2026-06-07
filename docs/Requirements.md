@@ -15,6 +15,8 @@
 | FR-009 | The system shall expose supporting telemetry evidence for each recommendation. | Product Vision | Must | Traceability requirement. |
 | FR-010 | The system shall produce a readable coaching report for a loaded telemetry file. | Agent-derived from UX goals | Must | First MVP interface; may be CLI/text/Markdown initially. |
 | FR-011 | The system should support future reference lap comparison without requiring it for MVP operation. | Product Vision | Should | Design should not block future expansion. |
+| FR-012 | The system shall allow users to limit report length from the CLI. | Agent-derived from coaching-first usability | Should | Supports focused review of highest-impact opportunities. |
+| FR-013 | The system shall allow users to exclude consistency findings from the CLI report. | Agent-derived from coaching-first usability | Should | Separates direct lap-comparison coaching from repeatability coaching when desired. |
 
 ## Non-Functional Requirements
 
@@ -34,5 +36,6 @@ For a representative `.ibt` file with completed laps:
 
 - The user can run one documented command to generate a coaching report.
 - The report lists ranked opportunities with estimated time impact.
+- Repeated lap findings for the same segment are consolidated into a readable coaching opportunity.
 - Each opportunity includes where, why, what to change, how to practice, and supporting evidence.
 - Tests can be run with one documented command.

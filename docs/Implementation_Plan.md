@@ -38,3 +38,27 @@ Target outcome:
 ## Current Gate Before Code
 
 Implementation code may begin. The human confirmed that synthetic telemetry fixtures are acceptable until a representative Late Model `.ibt` file is available, and that a CLI-generated Markdown/text coaching report is acceptable for the first milestone.
+
+## Second Implementation Milestone
+
+Milestone 2: Analysis configurability and clearer coaching prioritization.
+
+Target outcome:
+
+- Milestone 1 accepted by the human.
+- Analysis thresholds documented and represented in code as configuration.
+- Repeated lap findings consolidated so ranked output focuses on coaching opportunities.
+- CLI controls added for limiting report length and excluding consistency findings.
+- Analysis assumptions documented outside source code.
+- Requirements, architecture, traceability, test strategy, and run evidence updated.
+
+Status:
+
+| Step | Task | Exit Criteria |
+|---|---|---|
+| 1 | Record Milestone 1 acceptance. | Done: run evidence updated. |
+| 2 | Make analysis thresholds explicit. | Done: `AnalysisConfig` added. |
+| 3 | Consolidate repeated segment findings. | Done: report now retains repeated evidence without duplicate pace rows. |
+| 4 | Add CLI report controls. | Done: `--max-opportunities` and `--no-consistency`. |
+| 5 | Update tests. | Done: 10 tests pass. |
+| 6 | Update engineering artifacts. | Done: requirements, architecture, traceability, test strategy, assumptions, analysis rules, and run evidence updated. |

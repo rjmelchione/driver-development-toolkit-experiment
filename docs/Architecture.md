@@ -59,11 +59,16 @@ Initial opportunity categories:
 
 These categories are intentionally conservative and explainable.
 
+The analysis layer now uses an explicit `AnalysisConfig` for thresholds and report-shaping options. Rule details are documented in `docs/Analysis_Rules.md` so future maintainers can tune behavior without reverse engineering the implementation.
+
+Repeated lap findings for the same segment are consolidated into one primary pace opportunity with repeated evidence attached. Consistency opportunities remain separate because they answer a different coaching question.
+
 ## Interfaces
 
 Initial interface:
 
 - CLI command that accepts an `.ibt` path and writes a Markdown or text coaching report.
+- CLI options for limiting ranked opportunities and excluding consistency findings.
 
 Future interfaces:
 

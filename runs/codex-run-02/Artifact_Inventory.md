@@ -19,3 +19,4 @@
 | `pyproject.toml` | Build artifact | Codex | Stage 2 | Define Python package, CLI entry point, and test dependency group. | Created after human clarified implementation could proceed. | Yes |
 | `src/driver_development_toolkit/` | Implementation | Codex | Stage 2 | Provide domain models, ingestion boundary, analysis rules, reporting, CLI, and synthetic fixtures. | Initial MVP foundation. | Yes |
 | `tests/` | Quality artifact | Codex | Stage 2 | Validate analysis ranking, evidence-backed reporting, and ingestion boundary behavior. | Uses synthetic fixtures until real `.ibt` data is available. | Yes |
+| `docs/Analysis_Rules.md` | Design documentation | Codex | Stage 2 | Document ranking, thresholds, classifications, consolidation, consistency analysis, and validation boundary. | Added in Milestone 2 to avoid reverse engineering coaching logic. | Yes |

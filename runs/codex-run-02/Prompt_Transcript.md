@@ -23,3 +23,7 @@ The human clarified:
 - The ingestion layer should be designed so real `.ibt` files can be incorporated later for validation.
 - A CLI-generated Markdown/text coaching report is acceptable as the first milestone.
 - Correctness, explainability, maintainability, traceability, and testability should be prioritized over UI.
+
+## Human Acceptance - 2026-06-06
+
+The human accepted Milestone 1 and instructed Codex to proceed to Milestone 2 while continuing to maintain requirements, architecture, traceability, test strategy, run evidence artifacts, design decisions, and assumptions. The human also instructed Codex not to remove current validation boundaries unless supported by evidence.

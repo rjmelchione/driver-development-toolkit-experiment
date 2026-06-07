@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from dataclasses import dataclass
 from statistics import mean, pstdev
 
 from driver_development_toolkit.models import (
@@ -22,13 +23,26 @@ DEFAULT_SEGMENTS: tuple[TrackSegment, ...] = (
 )
 
 
+@dataclass(frozen=True)
+class AnalysisConfig:
+    """Configurable thresholds for the explainable MVP analysis rules."""
+
+    minimum_impact_s: float = 0.03
+    throttle_delta_threshold_pct: float = 8.0
+    brake_delta_threshold_pct: float = 8.0
+    include_consistency: bool = True
+    max_opportunities: int | None = None
+
+
 def analyze_session(
     session: TelemetrySession,
     segments: tuple[TrackSegment, ...] = DEFAULT_SEGMENTS,
     minimum_impact_s: float = 0.03,
+    config: AnalysisConfig | None = None,
 ) -> list[Opportunity]:
     """Return ranked coaching opportunities for a session."""
 
+    analysis_config = config or AnalysisConfig(minimum_impact_s=minimum_impact_s)
     valid_laps = tuple(lap for lap in session.laps if lap.valid)
     if len(valid_laps) < 2:
         raise ValueError("At least two valid laps are required for self-comparison analysis.")
@@ -40,12 +54,20 @@ def analyze_session(
     for lap in comparison_laps:
         for segment in segments:
             impact = _segment_time_delta(lap, reference_lap, segment)
-            if impact < minimum_impact_s:
+            if impact < analysis_config.minimum_impact_s:
                 continue
-            opportunities.append(_classify_opportunity(lap, reference_lap, segment, impact))
+            opportunities.append(_classify_opportunity(lap, reference_lap, segment, impact, analysis_config))
 
-    opportunities.extend(_consistency_opportunities(valid_laps, segments, minimum_impact_s))
-    return sorted(opportunities, key=lambda opportunity: opportunity.impact_s, reverse=True)
+    consolidated = _consolidate_pace_opportunities(opportunities)
+    if analysis_config.include_consistency:
+        consolidated.extend(
+            _consistency_opportunities(valid_laps, segments, analysis_config.minimum_impact_s)
+        )
+
+    ranked = sorted(consolidated, key=lambda opportunity: opportunity.impact_s, reverse=True)
+    if analysis_config.max_opportunities is None:
+        return ranked
+    return ranked[: analysis_config.max_opportunities]
 
 
 def _segment_samples(lap: Lap, segment: TrackSegment) -> tuple[TelemetrySample, ...]:
@@ -88,12 +110,13 @@ def _classify_opportunity(
     reference_lap: Lap,
     segment: TrackSegment,
     impact_s: float,
+    config: AnalysisConfig,
 ) -> Opportunity:
     throttle_delta = _average_throttle(reference_lap, segment) - _average_throttle(lap, segment)
     brake_delta = _average_brake(lap, segment) - _average_brake(reference_lap, segment)
     speed_delta = _average_speed(reference_lap, segment) - _average_speed(lap, segment)
 
-    if throttle_delta >= 8:
+    if throttle_delta >= config.throttle_delta_threshold_pct:
         return _build_opportunity(
             segment,
             OpportunityKind.THROTTLE_APPLICATION,
@@ -117,7 +140,7 @@ def _classify_opportunity(
             reference_lap.number,
         )
 
-    if brake_delta >= 8:
+    if brake_delta >= config.brake_delta_threshold_pct:
         return _build_opportunity(
             segment,
             OpportunityKind.BRAKE_RELEASE,
@@ -158,6 +181,45 @@ def _classify_opportunity(
         lap.number,
         reference_lap.number,
     )
+
+
+def _consolidate_pace_opportunities(opportunities: list[Opportunity]) -> list[Opportunity]:
+    """Keep the highest-impact pace opportunity per segment and note repeated evidence."""
+
+    grouped: dict[str, list[Opportunity]] = {}
+    for opportunity in opportunities:
+        grouped.setdefault(opportunity.segment.name, []).append(opportunity)
+
+    consolidated: list[Opportunity] = []
+    for segment_opportunities in grouped.values():
+        ranked = sorted(segment_opportunities, key=lambda item: item.impact_s, reverse=True)
+        primary = ranked[0]
+        repeated = ranked[1:]
+        if repeated:
+            observed_laps = ", ".join(
+                f"lap {item.comparison_lap}" for item in repeated if item.comparison_lap is not None
+            )
+            evidence = primary.evidence + (
+                TelemetryEvidence(
+                    "Repeated opportunity",
+                    f"also detected on {observed_laps}" if observed_laps else "also detected on other laps",
+                    "Repeated findings increase confidence that this is a practice-worthy pattern.",
+                ),
+            )
+            primary = Opportunity(
+                segment=primary.segment,
+                kind=primary.kind,
+                impact_s=primary.impact_s,
+                cause=primary.cause,
+                recommendation=primary.recommendation,
+                practice=primary.practice,
+                evidence=evidence,
+                comparison_lap=primary.comparison_lap,
+                reference_lap=primary.reference_lap,
+            )
+        consolidated.append(primary)
+
+    return consolidated
 
 
 def _build_opportunity(
