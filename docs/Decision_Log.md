@@ -1,6 +1,6 @@
 # Decision Log – Driver Development Toolkit
 
-Version: 1.0  
+Version: 1.1  
 Status: Active
 
 ---
@@ -151,3 +151,26 @@ In any road course or oval, the driver slows most at the corner apex. Local mini
 The `src/` layout prevents accidental imports of the package from the project root during development. This is the modern Python packaging standard and avoids subtle import resolution bugs. `pyproject.toml` is configured with `tool.hatch.build.targets.wheel.packages = ["src/driver_toolkit"]`.
 
 **Tradeoffs**: Requires `uv sync` and `PYTHONPATH` configuration or editable install (`uv pip install -e .`) for test discovery. Handled via `pyproject.toml` configuration.
+
+---
+
+## DEC-008 – pyirsdk API Correction: IBT Class, Not IRSDK Class
+
+**Date**: 2026-06-06  
+**Context**: Post-implementation review of `ibt_reader.py` identified that the original implementation used `irsdk.IRSDK` with `freeze_var_buffer_latest()` — the live shared-memory SDK pattern. The pyirsdk tutorial explicitly states: "you have to use `irsdk.IBT` Class" for reading `.ibt` files. This was a confirmed API error that would have caused complete parsing failure on any real file.
+
+**Discovery method**: Retrospective risk review prompted source code and documentation verification. The error was introduced during initial implementation because the `IRSDK` class documentation mentions `test_file` parameter support, which was interpreted as `.ibt` file reading capability. The two capabilities are architecturally distinct in pyirsdk.
+
+**Decision**: Rewrote `ibt_reader.py` to use `irsdk.IBT` with `get_all(channel)` bulk reads.
+
+**Correct pattern**:
+```python
+ibt = irsdk.IBT()
+ibt.open(path)
+values = ibt.get_all("Speed")   # returns list of all tick values for that channel
+ibt.close()
+```
+
+**Remaining uncertainty**: Session info access (`car`, `track` name) from the `IBT` class is not confirmed by documentation. The implementation attempts the same attribute access pattern as the live SDK (`session_info` dict) but may require adjustment against a real file. See Requirements A-001.
+
+**Impact**: All 58 existing tests continue to pass (tests do not exercise the `ibt_reader.py` path). No behavioural change to the analysis or coaching pipeline.

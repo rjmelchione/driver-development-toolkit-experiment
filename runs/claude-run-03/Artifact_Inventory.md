@@ -19,3 +19,4 @@
 | src/driver_toolkit/ui/ | Implementation | Agent | Stage 1 | Streamlit coaching dashboard with drill-down | Coaching-first layout per vision | Yes |
 | tests/ | Tests | Agent | Stage 1 | Unit and integration tests for analysis layer | pytest; synthetic data; 80%+ analysis layer coverage | Yes |
 | docs/Maintainer_Handoff.md | Handoff | Agent | Stage 1 | System overview, setup, known limits for future developers | Written at run completion | Yes |
+| docs/Coaching_Rules_Review.md | Review Instrument | Agent | Stage 1 | Structured domain expert review of all 5 coaching rule types | Covers triggers, coaching text, and 4 targeted review questions per rule; includes 5 cross-cutting questions | Yes |
