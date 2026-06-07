@@ -25,7 +25,7 @@
   - [x] Add interactive Plotly overlay charts (speed, throttle, brake)
   - [x] Add interactive tooltips showing current inputs vs reference inputs at specific track locations
   - [x] Manually verify UI flow and responsiveness
-- [ ] **Milestone 5: Documentation & Handoff**
-  - [ ] Create `docs/Maintainer_Handoff.md`
-  - [ ] Write `runs/antigravity-run-01/walkthrough.md` summarizing features, test instructions, and screenshots
-  - [ ] Final project linting, validation, and commit
+- [x] **Milestone 5: Documentation & Handoff**
+  - [x] Create `runs/antigravity-run-01/Maintainer_Handoff.md`
+  - [x] Write `runs/antigravity-run-01/walkthrough.md` summarizing features, test instructions, and screenshots
+  - [x] Final project linting, validation, and commit
