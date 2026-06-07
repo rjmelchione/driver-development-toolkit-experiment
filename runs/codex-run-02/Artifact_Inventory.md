@@ -21,3 +21,4 @@
 | `tests/` | Quality artifact | Codex | Stage 2 | Validate analysis ranking, evidence-backed reporting, and ingestion boundary behavior. | Uses synthetic fixtures until real `.ibt` data is available. | Yes |
 | `docs/Analysis_Rules.md` | Design documentation | Codex | Stage 2 | Document ranking, thresholds, classifications, consolidation, consistency analysis, and validation boundary. | Added in Milestone 2 to avoid reverse engineering coaching logic. | Yes |
 | `tests/fixtures/synthetic_late_model_session.json` | Test fixture | Codex | Stage 2 | Provide repeatable on-disk telemetry input for fixture-path ingestion and CLI tests. | Synthetic and labeled as such; not real driver evidence. | Yes |
+| `runs/codex-run-02/Run_02_Closeout.md` | Closeout package | Codex | Stage 2 | Summarize final status, artifacts, limitations, verification, decisions, risks, and next steps. | Created at human request to close Run 02. | Yes |
