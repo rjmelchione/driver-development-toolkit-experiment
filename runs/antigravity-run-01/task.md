@@ -7,12 +7,12 @@
   - [x] Implement lap extraction and timeline splitting in `parser.py`
   - [x] Write unit tests for parsing and synthetic generation in `tests/test_parser.py`
   - [x] Validate tests pass and commit progress
-- [ ] **Milestone 2: Sectoring & Comparison Engine**
-  - [ ] Create base interface `BaseSectorer` and implement `OvalSectorer` in `analyzer.py`
-  - [ ] Create `TelemetryComparer` in `analyzer.py` using linear interpolation (numpy) to align two laps by distance
-  - [ ] Compute time-slip (delta-T) cumulative curve
-  - [ ] Write unit tests for sectoring and alignment in `tests/test_analyzer.py`
-  - [ ] Validate tests pass and commit progress
+- [x] **Milestone 2: Sectoring & Comparison Engine**
+  - [x] Create base interface `BaseSectorer` and implement `OvalSectorer` in `analyzer.py`
+  - [x] Create `TelemetryComparer` in `analyzer.py` using linear interpolation (numpy) to align two laps by distance
+  - [x] Compute time-slip (delta-T) cumulative curve
+  - [x] Write unit tests for sectoring and alignment in `tests/test_analyzer.py`
+  - [x] Validate tests pass and commit progress
 - [ ] **Milestone 3: Coaching Engine & Heuristics**
   - [ ] Implement entry, mid-corner, and exit coaching rules in `coaching.py`
   - [ ] Map flagged rules to ranked opportunities and structured practice recommendations
