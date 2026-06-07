@@ -205,7 +205,7 @@ The objective is to observe the engineering process the agent naturally creates 
 
 # 6. Initial Agent Launch Prompt
 
-Use the following prompt to start the Antigravity run.
+Use the following prompt to start the implementation agent run.
 
 ```text
 You are the development agent for an agentic software development experiment.
