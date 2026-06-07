@@ -13,11 +13,11 @@
   - [x] Compute time-slip (delta-T) cumulative curve
   - [x] Write unit tests for sectoring and alignment in `tests/test_analyzer.py`
   - [x] Validate tests pass and commit progress
-- [ ] **Milestone 3: Coaching Engine & Heuristics**
-  - [ ] Implement entry, mid-corner, and exit coaching rules in `coaching.py`
-  - [ ] Map flagged rules to ranked opportunities and structured practice recommendations
-  - [ ] Write unit tests for coaching rules in `tests/test_coaching.py`
-  - [ ] Validate tests pass and commit progress
+- [x] **Milestone 3: Coaching Engine & Heuristics**
+  - [x] Implement entry, mid-corner, and exit coaching rules in `coaching.py`
+  - [x] Map flagged rules to ranked opportunities and structured practice recommendations
+  - [x] Write unit tests for coaching rules in `tests/test_coaching.py`
+  - [x] Validate tests pass and commit progress
 - [ ] **Milestone 4: Streamlit UI Development**
   - [ ] Implement session metadata loader and file upload widget in `app.py`
   - [ ] Implement dashboard layout (sidebar for lap selections, main screen for findings)
